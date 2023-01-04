@@ -1,7 +1,8 @@
 // json get request
+let data;
 let getProduct = async () => {
-  let res = await fetch(`http://localhost:3000/data`);
-  let data = await res.json();
+  let res = await fetch(`https://amaranth-quail-vest.cyclic.app/data`);
+  data = await res.json();
   //   clg;
   display(data);
 };
@@ -57,6 +58,17 @@ const create = (x) => {
 };
 
 // Delete the product
+const deleteProduct = async (id) => {
+  let res = await fetch(`https://amaranth-quail-vest.cyclic.app/data/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  let del = await res.json();
+  getProduct();
+  display(data);
+  console.log(del);
+};
 
 // Edit the Product
 
