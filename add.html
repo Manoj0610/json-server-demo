@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/json_assignment/style/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="navbar">
+      <a href="index.html">
+        <p>Produts</p>
+      </a>
+      <a href="add.html">
+        <p>Add Product</p>
+      </a>
+    </div>
+
+    <div id="form_container">
+      <h1>Add Product</h1>
+      <form action="" id="form" onsubmit="AddProduct(event)">
+        <p>Category</p>
+        <input
+          type="text"
+          required
+          id="category"
+          placeholder="Product category"
+        />
+        <p>Product Name</p>
+        <input type="text" required id="name" placeholder="Product name" />
+        <p>Product Image URL</p>
+        <input type="url" required id="image" placeholder="Image url" />
+        <p>Price</p>
+        <input
+          type="number"
+          required
+          id="price"
+          placeholder="Enter product price"
+        />
+        <p>Brand</p>
+        <input type="text" required id="brand" placeholder="Product brand" />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>
+<script src="/json_assignment//script/index.js"></script>

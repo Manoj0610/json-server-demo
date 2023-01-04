@@ -11,7 +11,7 @@ getProduct();
 // append the data
 const display = (data) => {
   let container = document.querySelector("#container");
-  container.innerHTML = null;
+  container.innerHTML = "";
 
   data.map((item, index) => {
     // create elements
@@ -43,7 +43,7 @@ const display = (data) => {
     edit.innerText = "Edit";
     edit.setAttribute("class", "edit_prod");
     edit.addEventListener("click", () => {
-      editProduct();
+      editProduct(item.id);
     });
 
     // append
@@ -66,10 +66,67 @@ const deleteProduct = async (id) => {
 
   let del = await res.json();
   getProduct();
-  display(data);
   console.log(del);
 };
 
 // Edit the Product
 
+const editProduct = () => {
+  window.location.href = "update.html";
+};
+
+// update Product
+const UpdateProduct = async () => {
+  event.preventDefault();
+  let category = document.querySelector("#category").value;
+  let name = document.querySelector("#name").value;
+  let image = document.querySelector("#image").value;
+  let price = document.querySelector("#price").value;
+  let brand = document.querySelector("#brand").value;
+  // let id = data.length + 1;
+  let obj = {
+    title: name,
+    image: image,
+    price: price,
+    brand: brand,
+    category: category,
+  };
+
+  let res = await fetch(`https://amaranth-quail-vest.cyclic.app/data/${id}`, {
+    method: "POST",
+    body: JSON.stringify(obj),
+    headers: { "Content-Type": "application/json" },
+  });
+  let data = await res.json();
+  alert("Product Added");
+  console.log(data);
+  getProduct();
+};
+
 // Add the product
+const AddProduct = async (event) => {
+  event.preventDefault();
+  let category = document.querySelector("#category").value;
+  let name = document.querySelector("#name").value;
+  let image = document.querySelector("#image").value;
+  let price = document.querySelector("#price").value;
+  let brand = document.querySelector("#brand").value;
+  // let id = data.length + 1;
+  let obj = {
+    title: name,
+    image: image,
+    price: price,
+    brand: brand,
+    category: category,
+  };
+
+  let res = await fetch(`https://amaranth-quail-vest.cyclic.app/data`, {
+    method: "POST",
+    body: JSON.stringify(obj),
+    headers: { "Content-Type": "application/json" },
+  });
+  let data = await res.json();
+  alert("Product Added");
+  console.log(data);
+  getProduct();
+};
